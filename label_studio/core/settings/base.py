@@ -785,6 +785,7 @@ S3_TRUSTED_STORAGE_DOMAINS = get_env_list(
         'oracle.com',
         'amazon.com',
         'appdomain.cloud',
+        'aliyuncs.com'
     ],
 )
 
