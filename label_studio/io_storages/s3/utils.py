@@ -36,8 +36,9 @@ def get_client_and_resource(
     s3_endpoint = s3_endpoint or get_env('S3_ENDPOINT')
     if s3_endpoint:
         settings['endpoint_url'] = s3_endpoint
-    client = session.client('s3', config=boto3.session.Config(signature_version='s3v4'), **settings)
-    resource = session.resource('s3', config=boto3.session.Config(signature_version='s3v4'), **settings)
+    signature_version = get_env('S3_SIGNATURE_VERSION') or 's3v4'
+    client = session.client('s3', config=boto3.session.Config(signature_version=signature_version), **settings)
+    resource = session.resource('s3', config=boto3.session.Config(signature_version=signature_version), **settings)
     return client, resource
 
 
